@@ -6,6 +6,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
+/**
+ * @Description: 
+ * @Param: 
+ * @return: 
+ * @Author: XiaoShuMu
+ * @Date: 2021/9/1
+ */
 public interface StorageService {
 
 	void init();

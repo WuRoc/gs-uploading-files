@@ -14,18 +14,30 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-
+/**
+ * @Description: FileSystemStorageServiceImpl
+ * @Param:
+ * @return:
+ * @Author: XiaoShuMu
+ * @Date: 2021/9/2
+ */
 @Service
-public class FileSystemStorageService implements StorageService {
+public class FileSystemStorageServiceImpl implements StorageService {
 
 	private final Path rootLocation;
-
+	/**
+	 * @Description: rootLocation 这个是储存文件的位置
+	 * @Param: [properties]
+	 * @return: 
+	 * @Author: XiaoShuMu
+	 * @Date: 2021/9/3
+	 */
 	@Autowired
-	public FileSystemStorageService(StorageProperties properties) {
+	public FileSystemStorageServiceImpl(StorageProperties properties) {
 		this.rootLocation = Paths.get(properties.getLocation());
 	}
+
 
 	@Override
 	public void store(MultipartFile file) {
@@ -34,6 +46,7 @@ public class FileSystemStorageService implements StorageService {
 				throw new StorageException("Failed to store empty file.");
 			}
 			Path destinationFile = this.rootLocation.resolve(
+					//返回客户端文件系统中的原始文件名
 					Paths.get(file.getOriginalFilename()))
 					.normalize().toAbsolutePath();
 			if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {

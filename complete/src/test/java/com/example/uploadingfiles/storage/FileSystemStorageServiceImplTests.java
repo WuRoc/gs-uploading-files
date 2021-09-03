@@ -35,15 +35,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author Dave Syer
  *
  */
-public class FileSystemStorageServiceTests {
+public class FileSystemStorageServiceImplTests {
 
 	private StorageProperties properties = new StorageProperties();
-	private FileSystemStorageService service;
+	private FileSystemStorageServiceImpl service;
 
 	@BeforeEach
 	public void init() {
 		properties.setLocation("target/files/" + Math.abs(new Random().nextLong()));
-		service = new FileSystemStorageService(properties);
+		service = new FileSystemStorageServiceImpl(properties);
 		service.init();
 	}
 
