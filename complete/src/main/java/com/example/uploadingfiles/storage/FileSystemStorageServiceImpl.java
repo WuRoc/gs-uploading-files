@@ -49,6 +49,8 @@ public class FileSystemStorageServiceImpl implements StorageService {
 					//返回客户端文件系统中的原始文件名
 					Paths.get(file.getOriginalFilename()))
 					.normalize().toAbsolutePath();
+			System.out.println(destinationFile);
+			System.out.println(file.getOriginalFilename());
 			if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
 				// This is a security check
 				throw new StorageException(
